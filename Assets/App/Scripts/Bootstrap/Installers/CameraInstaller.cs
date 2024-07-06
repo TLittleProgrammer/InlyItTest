@@ -3,7 +3,7 @@ using App.Scripts.Player;
 using App.Scripts.SceneContainer.Installer;
 using UnityEngine;
 
-namespace App.Scripts.Installers
+namespace App.Scripts.Bootstrap.Installers
 {
     public class CameraInstaller : MonoInstaller
     {

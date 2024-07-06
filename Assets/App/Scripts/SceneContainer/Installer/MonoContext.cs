@@ -6,7 +6,7 @@ namespace App.Scripts.SceneContainer.Installer
 {
     public class MonoContext : MonoBehaviour
     {
-        public List<MonoInstaller> installers = new();
+        public List<MonoInstaller> Installers = new();
 
         private readonly List<IInitializable> _initializables = new();
         private readonly List<IUpdatable> _updatables = new();
@@ -29,7 +29,7 @@ namespace App.Scripts.SceneContainer.Installer
         private ServiceContainer BuildContainer()
         {
             var container = new ServiceContainer();
-            foreach (var installer in installers)
+            foreach (var installer in Installers)
             {
                 installer.InstallBindings(container);
             }

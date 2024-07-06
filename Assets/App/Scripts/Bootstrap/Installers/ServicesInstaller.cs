@@ -2,7 +2,7 @@
 using App.Scripts.SceneContainer.Installer;
 using App.Scripts.Time;
 
-namespace App.Scripts.Installers
+namespace App.Scripts.Bootstrap.Installers
 {
     public class ServicesInstaller : MonoInstaller
     {
