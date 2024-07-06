@@ -7,12 +7,14 @@ namespace App.Scripts.Player.Systems
     public class PlayerCollisionSystem : IPlayerCollisionSystem
     {
         private readonly ITriggerColliderable _playerEnterCollisionable;
-        private readonly IUIInteractiveItemSystem _uiInteractiveItemSystem;
+        private readonly IInteractiveSystem _interactiveSystem;
 
-        public PlayerCollisionSystem(ITriggerColliderable playerEnterCollisionable, IUIInteractiveItemSystem uiInteractiveItemSystem)
+        public PlayerCollisionSystem(
+            ITriggerColliderable playerEnterCollisionable,
+            IInteractiveSystem interactiveSystem)
         {
             _playerEnterCollisionable = playerEnterCollisionable;
-            _uiInteractiveItemSystem = uiInteractiveItemSystem;
+            _interactiveSystem = interactiveSystem;
         }
 
         public void Initialize()
@@ -23,19 +25,19 @@ namespace App.Scripts.Player.Systems
 
         private void OnPlayerEnterCollised(Collider obj)
         {
-            Process(obj, _uiInteractiveItemSystem.AddItem);
+            Process(obj, _interactiveSystem.EnterInteractive);
         }
 
         private void OnPlayerExitCollised(Collider obj)
         {
-            Process(obj, _uiInteractiveItemSystem.RemoveItem);
+            Process(obj, _interactiveSystem.ExitInteractive);
         }
 
-        private void Process(Collider collision, Action<InteractiveType> processAction)
+        private void Process(Collider collision, Action<IInteractiveItem> processAction)
         {
             if (collision.TryGetComponent(out IInteractiveItem interactiveItem))
             {
-                processAction.Invoke(interactiveItem.InteractiveType);
+                processAction.Invoke(interactiveItem);
             }
         }
     }

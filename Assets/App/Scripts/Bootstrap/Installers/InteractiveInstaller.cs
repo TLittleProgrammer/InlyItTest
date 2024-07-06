@@ -16,9 +16,11 @@ namespace App.Scripts.Bootstrap.Installers
         {
             Container.SetService<UiInteractiveElementInfoContainer, UiInteractiveElementInfoContainer>(new(_uiInteractiveElementInfoProvider));
             
-            
             UIInteractiveItemSystem system = Container.CreateInstanceWithArguments<UIInteractiveItemSystem>(_interactivePrefab, _interactiveParent);
             Container.SetService<IUIInteractiveItemSystem, UIInteractiveItemSystem>(system);
+
+            InteractiveSystem interactiveSystem = Container.CreateInstance<InteractiveSystem>();
+            Container.SetServiceInterfaces(interactiveSystem);
         }
     }
 }
