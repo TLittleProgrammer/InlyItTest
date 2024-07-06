@@ -9,7 +9,6 @@ namespace App.Scripts.Player.Facade
         
         public void Update()
         {
-            Debug.Log("AA");
             foreach (IPlayerModule module in _modules)
             {
                 module.UpdateModule();

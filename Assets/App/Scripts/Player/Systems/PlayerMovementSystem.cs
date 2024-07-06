@@ -29,18 +29,31 @@ namespace App.Scripts.Player.Systems
 
         public void UpdateModule()
         {
+            Vector3 direction = GetDirection();
+
+            _playerView.CharacterController.Move( direction * _movementSettings.Speed * _timeProvider.DeltaTime);
+        }
+
+        private Vector3 GetDirection()
+        {
             Vector3 direction = Vector3.zero;
-            
+
             if (_moveInputService.Axis.magnitude > MathConstants.Epsilon)
             {
-                direction = _cameraTransform.TransformDirection(_moveInputService.Axis);
-                direction.y = 0f;
-                direction.Normalize();
+                UpdateDirectionAndRotation(out direction);
             }
 
             direction += Physics.gravity;
+            return direction;
+        }
 
-            _playerView.CharacterController.Move( direction * _movementSettings.Speed * _timeProvider.DeltaTime);
+        private void UpdateDirectionAndRotation(out Vector3 direction)
+        {
+            direction = _cameraTransform.TransformDirection(_moveInputService.Axis);
+            direction.y = 0f;
+            direction.Normalize();
+
+            _playerView.transform.forward = direction;
         }
     }
 }
