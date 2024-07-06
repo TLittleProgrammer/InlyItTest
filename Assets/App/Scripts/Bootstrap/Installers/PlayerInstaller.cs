@@ -16,11 +16,17 @@ namespace App.Scripts.Bootstrap.Installers
         {
             PlayerFacade playerFacade = new();
             IPlayerMovementSystem playerMovementSystem = CreatePlayerMovementSystem();
+            PlayerCollisionSystem playerCollisionSystem = CreatePlayerCollisionSystem();
             
             playerFacade.AddModule(playerMovementSystem);
             
-            Container.SetService<IPlayerFacade, PlayerFacade>(playerFacade);
-            Container.SetService<IUpdatable, PlayerFacade>(playerFacade);
+            Container.SetServiceInterfaces(playerCollisionSystem);
+            Container.SetServiceInterfaces(playerFacade);
+        }
+
+        private PlayerCollisionSystem CreatePlayerCollisionSystem()
+        {
+            return Container.CreateInstanceWithArguments<PlayerCollisionSystem>(_playerView);
         }
 
         private IPlayerMovementSystem CreatePlayerMovementSystem()
