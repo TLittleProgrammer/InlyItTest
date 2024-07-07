@@ -2,6 +2,8 @@
 using System.Linq;
 using App.Scripts.Bootstrap.Installers;
 using App.Scripts.Keyboard;
+using App.Scripts.Settings;
+using TMPro;
 using UnityEngine;
 
 namespace App.Scripts.InteractiveItems
@@ -11,15 +13,18 @@ namespace App.Scripts.InteractiveItems
         private readonly IKeyboardClickHandleSystem _keyboardClickHandleSystem;
         private readonly IInteractiveSystem _interactiveSystem;
         private readonly List<InteractiveItemActivatorInfo> _activators;
+        private readonly GameSettings _gameSettings;
 
         public InteractiveItemsActivator(
             IKeyboardClickHandleSystem keyboardClickHandleSystem,
             IInteractiveSystem interactiveSystem,
-            List<InteractiveItemActivatorInfo> activators)
+            List<InteractiveItemActivatorInfo> activators,
+            GameSettings gameSettings)
         {
             _keyboardClickHandleSystem = keyboardClickHandleSystem;
             _interactiveSystem = interactiveSystem;
             _activators = activators;
+            _gameSettings = gameSettings;
         }
         
         public void Initialize()
@@ -37,9 +42,9 @@ namespace App.Scripts.InteractiveItems
             _activators.First(x => x.Id == needUseType).Activator.Activate();
         }
 
-        private static bool IsCannotActivateInteractiveItem(InteractiveType needUseType)
+        private bool IsCannotActivateInteractiveItem(InteractiveType needUseType)
         {
-            return !UnityEngine.Input.GetKeyDown(KeyCode.E) || needUseType is InteractiveType.None;
+            return !UnityEngine.Input.GetKeyDown(_gameSettings.UseInteractiveItemKey) || needUseType is InteractiveType.None;
         }
     }
 }

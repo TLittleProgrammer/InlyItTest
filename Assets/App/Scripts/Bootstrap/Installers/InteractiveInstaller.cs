@@ -35,7 +35,7 @@ namespace App.Scripts.Bootstrap.Installers
             Container.SetServiceInterfaces(interactiveItemsActivator);
             
             
-            PlayerCollisionSystem playerCollisionSystem = CreatePlayerCollisionSystem();
+            PlayerCollisionSystem playerCollisionSystem = CreatePlayerCollisionSystem(interactiveSystem);
             Container.SetServiceInterfaces(playerCollisionSystem);
         }
 
@@ -65,9 +65,9 @@ namespace App.Scripts.Bootstrap.Installers
             });
         }
         
-        private PlayerCollisionSystem CreatePlayerCollisionSystem()
+        private PlayerCollisionSystem CreatePlayerCollisionSystem(IInteractiveSystem interactiveSystem)
         {
-            return Container.CreateInstanceWithArguments<PlayerCollisionSystem>(_playerView);
+            return Container.CreateInstanceWithArguments<PlayerCollisionSystem>(_playerView, interactiveSystem);
         }
     }
 }

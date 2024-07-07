@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Player.Systems;
+using Unity.VisualScripting;
 
 namespace App.Scripts.InteractiveItems
 {
@@ -7,14 +8,21 @@ namespace App.Scripts.InteractiveItems
     {
         private readonly IUIInteractiveItemSystem _uiInteractiveItemSystem;
         private readonly List<IInteractiveItem> _interactiveItems = new();
-        
-        public InteractiveSystem(IUIInteractiveItemSystem uiInteractiveItemSystem)
+        private readonly ICanUseItemResolveSystem _canUseItemResolveSystem;
+
+        public InteractiveSystem(IUIInteractiveItemSystem uiInteractiveItemSystem, ICanUseItemResolveSystem canUseItemResolveSystem)
         {
             _uiInteractiveItemSystem = uiInteractiveItemSystem;
+            _canUseItemResolveSystem = canUseItemResolveSystem;
         }
         
         public void EnterInteractive(IInteractiveItem interactiveItem)
         {
+            if (!_canUseItemResolveSystem.CanUseItItem(interactiveItem))
+            {
+                return;
+            }
+
             _uiInteractiveItemSystem.AddItem(interactiveItem.InteractiveType);
             
             _interactiveItems.Add(interactiveItem);

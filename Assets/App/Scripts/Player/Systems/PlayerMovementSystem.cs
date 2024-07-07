@@ -41,11 +41,6 @@ namespace App.Scripts.Player.Systems
         public void AddSpeed(float speed)
         {
             _plusSpeed += speed;
-
-            if (_movementSettings.Speed + _plusSpeed < 0f)
-            {
-                _plusSpeed = -(_movementSettings.Speed - 1f);
-            }
         }
 
         private Vector3 GetDirection()
