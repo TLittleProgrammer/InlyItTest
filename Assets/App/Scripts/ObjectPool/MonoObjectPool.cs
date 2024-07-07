@@ -19,6 +19,7 @@ namespace App.Scripts.External.ObjectPool
         {
             base.OnItemSpawned(item);
             item.gameObject.SetActive(true);
+            item.transform.localPosition = Vector3.zero;
         }
 
         protected override void OnDespawnItem(TMono targetItem)
