@@ -5,7 +5,7 @@
         private readonly ChangeHealthSettings _healthSettings;
         private readonly IHealthSystem _healthSystem;
 
-        public ChangeHealthActivator(ChangeHealthSettings healthSettings, IHealthSystem healthSystem)
+        protected ChangeHealthActivator(ChangeHealthSettings healthSettings, IHealthSystem healthSystem)
         {
             _healthSettings = healthSettings;
             _healthSystem = healthSystem;

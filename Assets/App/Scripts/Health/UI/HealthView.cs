@@ -19,7 +19,10 @@ namespace App.Scripts.InteractiveItems.UI
 
         private void OnEnable()
         {
-            _viewModel.HealthPoints.OnChanged += OnHealthPointsChanged;
+            if (_viewModel is not null)
+            {
+                _viewModel.HealthPoints.OnChanged += OnHealthPointsChanged;
+            }
         }
 
         private void OnDisable()

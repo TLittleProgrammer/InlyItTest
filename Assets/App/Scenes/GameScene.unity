@@ -456,9 +456,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactivePrefab: {fileID: 3049711797768608899, guid: a8ecea6e6e9b0d641a0663c5086e9b94, type: 3}
   _interactiveParent: {fileID: 538827019}
+  _playerView: {fileID: 1883657971}
   _uiInteractiveElementInfoProvider: {fileID: 11400000, guid: b1c0000bd29b3f94784f3a50713b87b3, type: 2}
   _medicineChestSettings: {fileID: 11400000, guid: 91f9b5b7bde5f284abcbe243a933b14f, type: 2}
   _getDamageSettings: {fileID: 11400000, guid: 59904e857ffbf4c4ebee26f1e6803488, type: 2}
+  _addSpeedSettings: {fileID: 11400000, guid: ab54388bbad35364f87fcd492b40be11, type: 2}
+  _minusSpeedSettings: {fileID: 11400000, guid: 8f4acb760b041c54caad8405961fbf9a, type: 2}
 --- !u!4 &354237758
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,8 +1339,8 @@ MonoBehaviour:
   - {fileID: 5481446}
   - {fileID: 1867643313}
   - {fileID: 1568745294}
-  - {fileID: 354237757}
   - {fileID: 554592940}
+  - {fileID: 354237757}
   - {fileID: 403621900}
   - {fileID: 2250031}
 --- !u!4 &822271451

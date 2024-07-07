@@ -5,5 +5,6 @@ namespace App.Scripts.Player.Systems
 {
     public interface IPlayerMovementSystem : IPlayerModule
     {
+        void AddSpeed(float speed);
     }
 }

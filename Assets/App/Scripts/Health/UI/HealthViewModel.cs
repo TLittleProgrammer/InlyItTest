@@ -22,7 +22,6 @@ namespace App.Scripts.InteractiveItems.UI
 
         private void OnHealthChanged(int newHealthValue)
         {
-            Debug.Log("C");
             HealthPoints.Value = newHealthValue;
         }
     }

@@ -13,6 +13,8 @@ namespace App.Scripts.Player.Systems
         private readonly ITimeProvider _timeProvider;
         private readonly PlayerMovementSettings _movementSettings;
 
+        private float _plusSpeed;
+
         public PlayerMovementSystem(
             PlayerView playerView,
             IMoveInputService moveInputService,
@@ -27,11 +29,23 @@ namespace App.Scripts.Player.Systems
             _movementSettings = movementSettings;
         }
 
+        private float Speed => _plusSpeed + _movementSettings.Speed;
+
         public void UpdateModule()
         {
             Vector3 direction = GetDirection();
 
-            _playerView.CharacterController.Move( direction * _movementSettings.Speed * _timeProvider.DeltaTime);
+            _playerView.CharacterController.Move( direction * Speed * _timeProvider.DeltaTime);
+        }
+
+        public void AddSpeed(float speed)
+        {
+            _plusSpeed += speed;
+
+            if (_movementSettings.Speed + _plusSpeed < 0f)
+            {
+                _plusSpeed = -(_movementSettings.Speed - 1f);
+            }
         }
 
         private Vector3 GetDirection()
