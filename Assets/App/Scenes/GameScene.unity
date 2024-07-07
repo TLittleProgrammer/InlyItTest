@@ -1339,9 +1339,9 @@ MonoBehaviour:
   - {fileID: 1327518839}
   - {fileID: 5481446}
   - {fileID: 1867643313}
-  - {fileID: 2007814625}
   - {fileID: 1568745294}
   - {fileID: 554592940}
+  - {fileID: 2007814625}
   - {fileID: 354237757}
   - {fileID: 403621900}
   - {fileID: 2250031}
@@ -2167,6 +2167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSettings: {fileID: 11400000, guid: 77f0999ce557a994692df1f9ffc60b7a, type: 2}
   _addHealthSettings: {fileID: 11400000, guid: 91f9b5b7bde5f284abcbe243a933b14f, type: 2}
+  _minusSpeedSettings: {fileID: 11400000, guid: 8f4acb760b041c54caad8405961fbf9a, type: 2}
 --- !u!1 &2064069707
 GameObject:
   m_ObjectHideFlags: 0

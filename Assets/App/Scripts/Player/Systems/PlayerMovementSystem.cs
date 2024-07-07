@@ -38,6 +38,8 @@ namespace App.Scripts.Player.Systems
             _playerView.CharacterController.Move( direction * Speed * _timeProvider.DeltaTime);
         }
 
+        public float CurrentSpeed => Speed;
+
         public void AddSpeed(float speed)
         {
             _plusSpeed += speed;
