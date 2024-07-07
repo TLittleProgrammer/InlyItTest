@@ -6,9 +6,7 @@ namespace App.Scripts.Settings
     public class GameSettings : ScriptableObject
     {
         public int MaxHealth;
-        public int MinHealth;
-
-        public float MaxSpeed;
+        
         public float MinSpeed;
 
         public KeyCode UseInteractiveItemKey;
