@@ -4,5 +4,7 @@
     {
         void EnterInteractive(IInteractiveItem interactiveItem);
         void ExitInteractive(IInteractiveItem interactiveItem);
+
+        InteractiveType GetInteractiveTypeThatNeedUse();
     }
 }
