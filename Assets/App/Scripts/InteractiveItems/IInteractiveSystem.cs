@@ -6,5 +6,6 @@
         void ExitInteractive(IInteractiveItem interactiveItem);
 
         InteractiveType GetInteractiveTypeThatNeedUse();
+        void UpdateInteractiveCondition(InteractiveType type);
     }
 }

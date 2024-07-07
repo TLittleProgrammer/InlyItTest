@@ -12,9 +12,9 @@ namespace App.Scripts.InteractiveItems
             _interactiveItemConditionInfos = interactiveItemConditionInfos;
         }
         
-        public bool CanUseItItem(IInteractiveItem interactiveItem)
+        public bool CanUseItItem(InteractiveType type)
         {
-            IntarectiveItemConditionInfo info = _interactiveItemConditionInfos.FirstOrDefault(x => x.Id == interactiveItem.InteractiveType);
+            IntarectiveItemConditionInfo info = _interactiveItemConditionInfos.FirstOrDefault(x => x.Id == type);
 
             if (info is null)
             {

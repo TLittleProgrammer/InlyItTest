@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Player.Systems;
 using Unity.VisualScripting;
 
@@ -18,7 +19,7 @@ namespace App.Scripts.InteractiveItems
         
         public void EnterInteractive(IInteractiveItem interactiveItem)
         {
-            if (!_canUseItemResolveSystem.CanUseItItem(interactiveItem))
+            if (!_canUseItemResolveSystem.CanUseItItem(interactiveItem.InteractiveType))
             {
                 return;
             }
@@ -38,6 +39,15 @@ namespace App.Scripts.InteractiveItems
         public InteractiveType GetInteractiveTypeThatNeedUse()
         {
             return _interactiveItems.Count == 0 ? InteractiveType.None : _interactiveItems[0].InteractiveType;
+        }
+
+        public void UpdateInteractiveCondition(InteractiveType type)
+        {
+            if (!_canUseItemResolveSystem.CanUseItItem(type))
+            {
+                var item = _interactiveItems.First(x => x.InteractiveType == type);
+                ExitInteractive(item);
+            }
         }
     }
 }

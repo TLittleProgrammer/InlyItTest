@@ -2,6 +2,6 @@
 {
     public interface ICanUseItemResolveSystem
     {
-        bool CanUseItItem(IInteractiveItem interactiveItem);
+        bool CanUseItItem(InteractiveType type);
     }
 }

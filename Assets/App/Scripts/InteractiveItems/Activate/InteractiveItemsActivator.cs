@@ -39,7 +39,10 @@ namespace App.Scripts.InteractiveItems
             if (IsCannotActivateInteractiveItem(needUseType))
                 return;
             
-            _activators.First(x => x.Id == needUseType).Activator.Activate();
+            var activatorInfo = _activators.First(x => x.Id == needUseType);
+            activatorInfo.Activator.Activate();
+            
+            _interactiveSystem.UpdateInteractiveCondition(activatorInfo.Id);
         }
 
         private bool IsCannotActivateInteractiveItem(InteractiveType needUseType)
