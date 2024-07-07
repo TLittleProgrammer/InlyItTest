@@ -1,8 +1,15 @@
-﻿namespace App.Scripts.InteractiveItems
+﻿using System.Collections.Generic;
+using App.Scripts.Bootstrap.Effects;
+
+namespace App.Scripts.InteractiveItems
 {
     public sealed class MedicineChestActivator : ChangeHealthActivator
     {
-        public MedicineChestActivator(ChangeHealthSettings healthSettings, IHealthSystem healthSystem) : base(healthSettings, healthSystem)
+        public MedicineChestActivator(
+            ChangeHealthSettings healthSettings,
+            IHealthSystem healthSystem,
+            IEffectsActivator effectsActivator,
+            List<string> needSpawnEffects) : base(healthSettings, healthSystem, effectsActivator, needSpawnEffects)
         {
         }
     }

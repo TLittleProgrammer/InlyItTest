@@ -1,4 +1,5 @@
 ﻿using System;
+using App.Scripts.Settings;
 using UnityEngine;
 
 namespace App.Scripts.Bootstrap.Installers
@@ -9,6 +10,6 @@ namespace App.Scripts.Bootstrap.Installers
         public int InitialSize;
         public string Key;
         public Transform Parent;
-        public ParticleSystem Prefab;
+        public GameObject Prefab;
     }
 }

@@ -4,6 +4,6 @@ namespace App.Scripts.Bootstrap.Effects
 {
     public interface IEffect
     {
-        event Action<string, EffectView> Disabled;
+        event Action<EffectView> Disabled;
     }
 }

@@ -18,6 +18,7 @@ namespace App.Scripts.Bootstrap.Installers
         [SerializeField] private ChangeHealthSettings _getDamageSettings;
         [SerializeField] private ChangeSpeedSettings _addSpeedSettings;
         [SerializeField] private ChangeSpeedSettings _minusSpeedSettings;
+        [SerializeField] private List<string> _needSpawnEffectsAfterHeal;
         
         protected override void OnInstallBindings()
         {
@@ -43,8 +44,8 @@ namespace App.Scripts.Bootstrap.Installers
         {
             List<InteractiveItemActivatorInfo> interactiveItemActivators = new();
             
-            var medicineChestActivator = Container.CreateInstanceWithArguments<MedicineChestActivator>(_medicineChestSettings);
-            var getDamageActivator     = Container.CreateInstanceWithArguments<GetDamageActivator>(_getDamageSettings);
+            var medicineChestActivator = Container.CreateInstanceWithArguments<MedicineChestActivator>(_medicineChestSettings, _needSpawnEffectsAfterHeal);
+            var getDamageActivator     = Container.CreateInstanceWithArguments<GetDamageActivator>(_getDamageSettings, new List<string>());
             var addSpeedActivator      = Container.CreateInstanceWithArguments<AddSpeedActivator>(_addSpeedSettings);
             var minusSpeedActivator    = Container.CreateInstanceWithArguments<MinusSpeedActivator>(_minusSpeedSettings);
 
